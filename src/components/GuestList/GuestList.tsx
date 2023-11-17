@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import UserSearch from './UserSearch';
 
 const GuestList: React.FC = () => {
   const [name, setName] = useState('');
@@ -25,6 +26,7 @@ const GuestList: React.FC = () => {
       <button
         onClick={addToList}
       >Add guest</button>
+      <UserSearch />
       <ul>
         {
           list.map(item => <li>{item}</li>)
