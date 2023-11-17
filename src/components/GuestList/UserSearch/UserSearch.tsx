@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface Props {
   onSearch: (term: string) => void
@@ -9,7 +9,15 @@ const UserSearch: React.FC<Props> = ({
   onSearch,
   onCleanInput
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [input, setInput] = useState('');
+  
+  useEffect(() => {
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.focus();
+  }, [])
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -25,6 +33,7 @@ const UserSearch: React.FC<Props> = ({
   return (
     <div>
       <input
+        ref={inputRef}
         value={input}
         onChange={onChangeInput}
       />
