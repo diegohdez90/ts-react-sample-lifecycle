@@ -10,7 +10,9 @@ const Parent = () => {
         onClick={() => {
           console.log('You have clicked me!!!');
         }}
-      />
+      >
+        This is children
+      </Children>
     </div>
   )
 }
