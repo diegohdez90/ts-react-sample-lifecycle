@@ -4,7 +4,7 @@ interface Props {
   color: string
 }
 
-const Children = ({
+const Children: React.FC<Props> = ({
   color
 }: Props) => {
   return (
