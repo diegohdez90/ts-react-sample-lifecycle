@@ -4,7 +4,11 @@ import UserSearch from './UserSearch';
 const GuestList: React.FC = () => {
   const [name, setName] = useState('');
   const [list, setList] = useState<string[]>([]);
-  const cleanInput = useCallback(() => setName(''), [])
+  const [filterList, setFilterList] = useState<string[]>([]);
+  const cleanInput = useCallback(() => {
+    setFilterList([...list])
+    setName('');
+  }, [])
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -15,6 +19,17 @@ const GuestList: React.FC = () => {
     cleanInput();
   }
 
+  const onSearchList = (term: string) => {
+    if(term.length > 0) {
+      setFilterList(prev => {
+        return prev.filter(item => item.toLowerCase().includes(term))
+      });
+    }
+  }
+
+  const onResetList = () => {
+    setFilterList([...list])
+  }
   return (
     <div>
       <h3>GuestList</h3>
@@ -26,10 +41,13 @@ const GuestList: React.FC = () => {
       <button
         onClick={addToList}
       >Add guest</button>
-      <UserSearch />
+      <UserSearch
+        onSearch={onSearchList}
+        onCleanInput={onResetList}
+      />
       <ul>
         {
-          list.map(item => <li>{item}</li>)
+          filterList.map(item => <li>{item}</li>)
         }
       </ul>
     </div>
