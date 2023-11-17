@@ -1,9 +1,16 @@
 import React from 'react'
 
-const Children = () => {
+interface Props {
+  color: string
+}
+
+const Children = ({
+  color
+}: Props) => {
   return (
     <div>
-      Children
+      Children<br />
+      The color is {color}
     </div>
   )
 }

@@ -5,7 +5,7 @@ const Parent = () => {
   return (
     <div>
       Parent
-      <Children />
+      <Children color='red' />
     </div>
   )
 }
