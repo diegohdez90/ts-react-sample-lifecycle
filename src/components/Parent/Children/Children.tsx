@@ -1,16 +1,19 @@
 import React from 'react'
 
 interface Props {
-  color: string
+  color: string,
+  onClick: () => void
 }
 
 const Children: React.FC<Props> = ({
-  color
+  color,
+  onClick
 }: Props) => {
   return (
     <div>
       Children<br />
       The color is {color}
+      <button onClick={onClick}>Click me!</button>
     </div>
   )
 }

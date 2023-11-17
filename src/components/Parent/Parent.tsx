@@ -5,7 +5,12 @@ const Parent = () => {
   return (
     <div>
       Parent
-      <Children color='red' />
+      <Children
+        color='red'
+        onClick={() => {
+          console.log('You have clicked me!!!');
+        }}
+      />
     </div>
   )
 }
